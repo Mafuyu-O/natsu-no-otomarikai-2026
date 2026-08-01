@@ -125,6 +125,10 @@ body {
   line-height: 1.5;
 }
 
+.trip-info-row dd a {
+  color: var(--accent);
+}
+
 .trip-info-map {
   border-radius: var(--card-radius);
   overflow: hidden;
