@@ -1,17 +1,10 @@
 :root {
-  --bg: #faf7f2;
-  --text: #2b2b2b;
-  --muted: #6b6b6b;
+  --text: #123c4a;
+  --muted: #4c7182;
   --card-radius: 14px;
-  --accent: #ff6b6b;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1b1b1f;
-    --text: #f2f2f2;
-    --muted: #a3a3a3;
-  }
+  --accent: #ff7a45;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: rgba(255, 255, 255, 0.7);
 }
 
 * {
@@ -20,9 +13,39 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
-  background: var(--bg);
   color: var(--text);
+  background: linear-gradient(160deg, #fff6d5 0%, #ffe08a 18%, #a8e6cf 48%, #4fc3f7 78%, #1c92d2 100%);
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  top: -12%;
+  left: -10%;
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 70%);
+}
+
+body::after {
+  bottom: -18%;
+  right: -12%;
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.35), transparent 70%);
 }
 
 .hero {
@@ -87,18 +110,21 @@ body {
 }
 
 .trip-info {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-}
-
-.trip-info + .trip-info {
-  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  max-width: 1050px;
+  margin: 1.25rem auto;
+  padding: 1.75rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 30px rgba(20, 80, 100, 0.12);
 }
 
 .trip-info h2 {
   margin: 0 0 1rem;
   font-size: 1.4rem;
+  color: var(--text);
 }
 
 .trip-info-grid {
@@ -162,9 +188,10 @@ body {
 }
 
 .member-list li {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.1rem;
   border-radius: 999px;
-  background: rgba(128, 128, 128, 0.15);
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.18), rgba(255, 122, 69, 0.18));
+  border: 1px solid rgba(18, 60, 74, 0.12);
   font-size: 0.95rem;
 }
 
@@ -219,10 +246,17 @@ body {
 }
 
 footer {
+  max-width: 1050px;
+  margin: 0.5rem auto 2.5rem;
   text-align: center;
-  color: var(--muted);
-  padding: 1rem 1.5rem 3rem;
+  color: var(--text);
+  padding: 1rem 1.5rem;
   font-size: 0.9rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .lightbox {
