@@ -92,6 +92,10 @@ body {
   padding: 2rem 1.5rem;
 }
 
+.trip-info + .trip-info {
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+}
+
 .trip-info h2 {
   margin: 0 0 1rem;
   font-size: 1.4rem;
@@ -146,6 +150,22 @@ body {
   .trip-info-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.member-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.member-list li {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(128, 128, 128, 0.15);
+  font-size: 0.95rem;
 }
 
 .gallery {
