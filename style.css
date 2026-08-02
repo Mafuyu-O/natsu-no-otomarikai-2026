@@ -329,10 +329,6 @@ body::after {
   border-bottom: none;
 }
 
-.shopping-table .total-row td:first-child {
-  text-align: right;
-}
-
 .shopping-table .total-row td {
   color: var(--accent);
   font-size: 1rem;
