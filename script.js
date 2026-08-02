@@ -126,7 +126,7 @@ function initCountdown() {
       hoursEl.textContent = "00";
       minutesEl.textContent = "00";
       secondsEl.textContent = "00";
-      if (captionEl) captionEl.textContent = "集合時刻になりました！";
+      if (captionEl) captionEl.textContent = "開催中です！";
       if (timer) clearInterval(timer);
       return;
     }
