@@ -105,3 +105,78 @@ function initCarousel(carousel) {
 }
 
 document.querySelectorAll("[data-carousel]").forEach(initCarousel);
+
+function initCountdown() {
+  const daysEl = document.getElementById("cdDays");
+  const hoursEl = document.getElementById("cdHours");
+  const minutesEl = document.getElementById("cdMinutes");
+  const secondsEl = document.getElementById("cdSeconds");
+  const captionEl = document.querySelector(".countdown-caption");
+  if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+  const target = new Date("2026-08-08T12:30:00+09:00").getTime();
+  const pad = (n) => String(n).padStart(2, "0");
+  let timer = null;
+
+  function update() {
+    const diff = target - Date.now();
+
+    if (diff <= 0) {
+      daysEl.textContent = "00";
+      hoursEl.textContent = "00";
+      minutesEl.textContent = "00";
+      secondsEl.textContent = "00";
+      if (captionEl) captionEl.textContent = "集合時刻になりました！";
+      if (timer) clearInterval(timer);
+      return;
+    }
+
+    const totalSeconds = Math.floor(diff / 1000);
+    daysEl.textContent = pad(Math.floor(totalSeconds / 86400));
+    hoursEl.textContent = pad(Math.floor((totalSeconds % 86400) / 3600));
+    minutesEl.textContent = pad(Math.floor((totalSeconds % 3600) / 60));
+    secondsEl.textContent = pad(totalSeconds % 60);
+  }
+
+  update();
+  timer = setInterval(update, 1000);
+}
+
+initCountdown();
+
+function initScrollReveal() {
+  const targets = Array.from(document.querySelectorAll(".reveal"));
+  if (targets.length === 0) return;
+
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const carGroups = new Map();
+  targets.forEach((el) => {
+    if (!el.classList.contains("car-card")) return;
+    const parent = el.parentElement;
+    if (!carGroups.has(parent)) carGroups.set(parent, []);
+    carGroups.get(parent).push(el);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const group = carGroups.get(el.parentElement);
+        const delay = group ? group.indexOf(el) * 0.08 : 0;
+        el.style.transitionDelay = `${delay}s`;
+        el.classList.add("is-visible");
+        observer.unobserve(el);
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  targets.forEach((el) => observer.observe(el));
+}
+
+initScrollReveal();

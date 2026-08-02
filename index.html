@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>旅のしおり | Trip Album</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,10 +22,38 @@
   <div class="hero-content">
     <h1>ドキッ！漢♂だらけ！夏のお泊り会</h1>
     <p class="subtitle">お泊り会のしおり</p>
+
+    <div class="countdown-wrap">
+      <p class="countdown-caption">集合まで</p>
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="countdown-item">
+          <span class="countdown-value" id="cdDays">00</span>
+          <span class="countdown-label">日</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="cdHours">00</span>
+          <span class="countdown-label">時間</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="cdMinutes">00</span>
+          <span class="countdown-label">分</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="cdSeconds">00</span>
+          <span class="countdown-label">秒</span>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
-<section class="trip-info">
+<div class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path d="M0,32 C240,80 480,0 720,32 C960,64 1200,16 1440,48 L1440,80 L0,80 Z" fill="#fff6d5"></path>
+  </svg>
+</div>
+
+<section class="trip-info reveal">
   <h2>買い出し</h2>
   <dl class="trip-info-list">
     <div class="trip-info-row">
@@ -142,10 +173,10 @@
   </details>
 </section>
 
-<section class="trip-info">
+<section class="trip-info reveal">
   <h2>車の割り振り</h2>
   <div class="car-grid">
-    <div class="car-card">
+    <div class="car-card reveal">
       <h3>1台目</h3>
       <ul class="car-member-list">
         <li>よしみ</li>
@@ -154,7 +185,7 @@
         <li>ゆうや</li>
       </ul>
     </div>
-    <div class="car-card">
+    <div class="car-card reveal">
       <h3>2台目</h3>
       <ul class="car-member-list">
         <li>りょうが</li>
@@ -162,14 +193,14 @@
         <li>ひろや</li>
       </ul>
     </div>
-    <div class="car-card">
+    <div class="car-card reveal">
       <h3>3台目</h3>
       <ul class="car-member-list">
         <li>みちと</li>
         <li>あつし</li>
       </ul>
     </div>
-    <div class="car-card">
+    <div class="car-card reveal">
       <h3>4台目</h3>
       <ul class="car-member-list">
         <li>けいすけ</li>
@@ -179,7 +210,7 @@
   </div>
 </section>
 
-<section class="trip-info">
+<section class="trip-info reveal">
   <h2>宿泊先情報</h2>
   <div class="trip-info-grid">
     <dl class="trip-info-list">
@@ -215,7 +246,7 @@
   </div>
 </section>
 
-<section class="trip-info">
+<section class="trip-info reveal">
   <h2>過去のハイライト(2024/08/16(金)〜2024/08/17(土))</h2>
 
   <h3 class="highlight-subheading">写真</h3>
