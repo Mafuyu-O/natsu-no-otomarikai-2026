@@ -329,11 +329,6 @@ body::after {
   font-weight: 600;
 }
 
-.shopping-table td:nth-child(3),
-.shopping-table td:nth-child(4) {
-  text-align: right;
-}
-
 .item-detail {
   display: block;
   margin-top: 0.15rem;
@@ -352,7 +347,7 @@ body::after {
 }
 
 .shopping-table .total-row td:last-child {
-  text-align: right;
+  text-align: left;
 }
 
 @media (max-width: 700px) {
