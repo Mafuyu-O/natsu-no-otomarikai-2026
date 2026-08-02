@@ -112,14 +112,27 @@ function initCountdown() {
   const minutesEl = document.getElementById("cdMinutes");
   const secondsEl = document.getElementById("cdSeconds");
   const captionEl = document.querySelector(".countdown-caption");
+  const countdownEl = document.getElementById("countdown");
   if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
   const target = new Date("2026-08-08T12:30:00+09:00").getTime();
+  const wrapUp = new Date("2026-08-10T00:00:00+09:00").getTime();
   const pad = (n) => String(n).padStart(2, "0");
   let timer = null;
 
   function update() {
-    const diff = target - Date.now();
+    const now = Date.now();
+
+    if (now >= wrapUp) {
+      if (countdownEl) countdownEl.style.display = "none";
+      if (captionEl) {
+        captionEl.innerHTML = "ご参加ありがとうございました。<br>次回は冬にお会いしましょう。";
+      }
+      if (timer) clearInterval(timer);
+      return;
+    }
+
+    const diff = target - now;
 
     if (diff <= 0) {
       daysEl.textContent = "00";
@@ -127,7 +140,6 @@ function initCountdown() {
       minutesEl.textContent = "00";
       secondsEl.textContent = "00";
       if (captionEl) captionEl.textContent = "開催中です！";
-      if (timer) clearInterval(timer);
       return;
     }
 
