@@ -165,24 +165,12 @@ function initScrollReveal() {
     return;
   }
 
-  const pendingTimers = new WeakMap();
-
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const el = entry.target;
-        const shouldShow = entry.isIntersecting;
-
-        const existingTimer = pendingTimers.get(el);
-        if (existingTimer) clearTimeout(existingTimer);
-
-        pendingTimers.set(
-          el,
-          setTimeout(() => {
-            el.classList.toggle("is-visible", shouldShow);
-            pendingTimers.delete(el);
-          }, 120)
-        );
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
       });
     },
     { threshold: 0, rootMargin: "-80px 0px -80px 0px" }
