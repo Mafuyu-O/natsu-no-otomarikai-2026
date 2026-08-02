@@ -188,7 +188,7 @@ function initScrollReveal() {
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0, rootMargin: "-80px 0px -80px 0px" }
   );
 
   targets.forEach((el) => observer.observe(el));
