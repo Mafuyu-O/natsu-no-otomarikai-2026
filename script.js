@@ -165,27 +165,24 @@ function initScrollReveal() {
     return;
   }
 
-  const carGroups = new Map();
-  targets.forEach((el) => {
-    if (!el.classList.contains("car-card")) return;
-    const parent = el.parentElement;
-    if (!carGroups.has(parent)) carGroups.set(parent, []);
-    carGroups.get(parent).push(el);
-  });
+  const pendingTimers = new WeakMap();
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         const el = entry.target;
-        if (entry.isIntersecting) {
-          const group = carGroups.get(el.parentElement);
-          const delay = group ? group.indexOf(el) * 0.08 : 0;
-          el.style.transitionDelay = `${delay}s`;
-          el.classList.add("is-visible");
-        } else {
-          el.style.transitionDelay = "0s";
-          el.classList.remove("is-visible");
-        }
+        const shouldShow = entry.isIntersecting;
+
+        const existingTimer = pendingTimers.get(el);
+        if (existingTimer) clearTimeout(existingTimer);
+
+        pendingTimers.set(
+          el,
+          setTimeout(() => {
+            el.classList.toggle("is-visible", shouldShow);
+            pendingTimers.delete(el);
+          }, 120)
+        );
       });
     },
     { threshold: 0, rootMargin: "-80px 0px -80px 0px" }
