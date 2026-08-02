@@ -323,14 +323,12 @@ body::after {
   white-space: normal;
 }
 
-.shopping-table .subtotal-row td,
 .shopping-table .total-row td {
   font-weight: 700;
   border-top: 2px solid rgba(18, 60, 74, 0.3);
   border-bottom: none;
 }
 
-.shopping-table .subtotal-row td:first-child,
 .shopping-table .total-row td:first-child {
   text-align: right;
 }
