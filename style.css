@@ -335,11 +335,100 @@ body::after {
   font-weight: 700;
   border-top: 2px solid rgba(18, 60, 74, 0.3);
   border-bottom: none;
-}
-
-.shopping-table .total-row td {
   color: var(--accent);
   font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+  .table-scroll {
+    overflow-x: visible;
+  }
+
+  .shopping-table {
+    min-width: 0;
+  }
+
+  .shopping-table thead {
+    display: none;
+  }
+
+  .shopping-table,
+  .shopping-table tbody {
+    display: block;
+  }
+
+  .shopping-table tr {
+    display: block;
+    margin-bottom: 0.6rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .shopping-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.2rem 0;
+    border-bottom: none;
+    white-space: normal;
+    text-align: right;
+  }
+
+  .shopping-table td:nth-child(1) {
+    display: block;
+    padding-top: 0;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .shopping-table td:nth-child(2)::before {
+    content: "数量の目安";
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .shopping-table td:nth-child(3)::before {
+    content: "単価の目安(税込)";
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .shopping-table td:nth-child(4)::before {
+    content: "合計金額";
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .item-detail {
+    margin-top: 0;
+  }
+
+  .shopping-table .total-row {
+    background: transparent;
+    padding: 0.6rem 0.1rem 0;
+  }
+
+  .shopping-table .total-row td {
+    border-top: none;
+  }
+
+  .shopping-table .total-row td:first-child {
+    justify-content: flex-start;
+    border-top: 2px solid rgba(18, 60, 74, 0.3);
+    padding-top: 0.6rem;
+  }
+
+  .shopping-table .total-row td:last-child {
+    border-top: 2px solid rgba(18, 60, 74, 0.3);
+    padding-top: 0.6rem;
+    font-size: 1.1rem;
+  }
+
+  .shopping-table .total-row td::before {
+    content: none;
+  }
 }
 
 .trip-info-grid {
