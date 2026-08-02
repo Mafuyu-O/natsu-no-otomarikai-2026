@@ -9,7 +9,7 @@ if (heroSlides.length > 0) {
       heroSlides[heroSlideIndex].classList.remove("active");
       heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
       heroSlides[heroSlideIndex].classList.add("active");
-    }, 4000);
+    }, 8000);
   }
 }
 
