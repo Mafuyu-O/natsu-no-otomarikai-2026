@@ -176,13 +176,16 @@ function initScrollReveal() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
         const el = entry.target;
-        const group = carGroups.get(el.parentElement);
-        const delay = group ? group.indexOf(el) * 0.08 : 0;
-        el.style.transitionDelay = `${delay}s`;
-        el.classList.add("is-visible");
-        observer.unobserve(el);
+        if (entry.isIntersecting) {
+          const group = carGroups.get(el.parentElement);
+          const delay = group ? group.indexOf(el) * 0.08 : 0;
+          el.style.transitionDelay = `${delay}s`;
+          el.classList.add("is-visible");
+        } else {
+          el.style.transitionDelay = "0s";
+          el.classList.remove("is-visible");
+        }
       });
     },
     { threshold: 0.15 }
