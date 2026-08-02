@@ -351,6 +351,10 @@ body::after {
   font-size: 1rem;
 }
 
+.shopping-table .total-row td:last-child {
+  text-align: right;
+}
+
 @media (max-width: 700px) {
   .table-scroll {
     overflow-x: visible;
@@ -418,23 +422,23 @@ body::after {
   }
 
   .shopping-table .total-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 0.6rem;
     background: transparent;
     padding: 0.6rem 0.1rem 0;
+    border-top: 2px solid rgba(18, 60, 74, 0.3);
   }
 
   .shopping-table .total-row td {
+    display: block;
+    padding: 0;
     border-top: none;
-  }
-
-  .shopping-table .total-row td:first-child {
-    justify-content: flex-start;
-    border-top: 2px solid rgba(18, 60, 74, 0.3);
-    padding-top: 0.6rem;
+    text-align: right;
   }
 
   .shopping-table .total-row td:last-child {
-    border-top: 2px solid rgba(18, 60, 74, 0.3);
-    padding-top: 0.6rem;
     font-size: 1.1rem;
   }
 
