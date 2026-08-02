@@ -258,6 +258,12 @@ body::after {
   background: linear-gradient(90deg, var(--accent), #4fc3f7);
 }
 
+.section-subtitle {
+  margin: -0.7rem 0 1.2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 .collapsible {
   margin-top: 1.5rem;
 }
