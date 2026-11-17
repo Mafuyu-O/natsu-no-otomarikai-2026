@@ -649,3 +649,22 @@ body::after {
   background: var(--accent);
 }
 
+
+/* 関連ページへのリンク */
+.site-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 16px 40px;
+}
+.site-links a {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+.site-links a:hover { color: var(--accent); }
